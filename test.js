@@ -5,7 +5,7 @@
 //
 // run tests by:  
 //
-//  1) node radio-test.js
+//  node test.js
 //
 // @Achronite - January 2020
 //
