@@ -26,24 +26,24 @@ function startMonitoringThread() {
 };
 
 
-// every 9 seconds toggle an OOK switch/teach message
+// every 14 seconds toggle an OOK switch/teach message
 var intervalId = setInterval(() => {
-    let zone = 0;
+    let zone = 1;
     let switchNum = 1;
     switchState = !switchState;
     let xmits = 20;
     console.log(`radio-test: switching ${zone}:${switchNum}:${switchState}`)
     var ret = ener314rt.ookSwitch(zone, switchNum, switchState, xmits);
-}, 9000);
-
-// Initialise
-console.log("radio-test: Initialising");
-var ret = ener314rt.initEner314rt(false);
-console.log(`radio-test: N-API radio_init returned ${ret}`);
-
+}, 14000);
 
 // every 30 seconds get the discovered deviceList
 var intervalId2 = setInterval(() => {
     var devices = ener314rt.openThingsDeviceList(false);
     console.log(`radio-test: deviceList=${devices}`);
 }, 30000);
+
+
+// Initialise radio adaptor
+console.log("radio-test: Initialising");
+var ret = ener314rt.initEner314rt(false);
+console.log(`radio-test: N-API radio_init returned ${ret}`);
