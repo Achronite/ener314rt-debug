@@ -9,7 +9,7 @@ Test program to diagnose issues with ener314rt and node
 If you do not have node-gyp, please install using ``$ npm install -g node-gyp``
 
 ## To run
-``$ node radio-test.js``
+``$ node test.js``
 
 # About
 
