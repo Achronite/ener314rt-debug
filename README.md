@@ -1,5 +1,7 @@
 # ener314rt-debug
-Test program to diagnose issues with ener314rt and node
+Test program to diagnose issues with ener314rt and node.
+
+This code runs completely independently of node module, and contains a clone of energenie-ener314rt v0.3.2 with debug output enabled.
 
 ## Check you have node installed, at least version 10
 ``$ node -v``
