@@ -66,7 +66,7 @@ radio-test: deviceList={"numDevices":0, "devices":[
 ```
 
 # Troubleshooting
-*radio_ver=0*: Check that you **do not** have hardware SPI enabled.  On raspbian if the hardware SPI driver was loaded, you will see the device /dev/spidev0.0.  If you see this switch hardware SPI OFF.
+*radio_ver=0*: Check that your card is installed correctly, and that you **do not** have hardware SPI enabled.  On raspbian if the hardware SPI driver was loaded, you will see the device `/dev/spidev0.0`.  If you see this, you will need to switch hardware SPI OFF.
 
 # About
 
