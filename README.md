@@ -26,6 +26,43 @@ This program:
 
 You can use the test.js file as a basis for creating a node module, but please utilise the released module **energenie-ener314rt** instead of the cloned code here to ensure you have the latest version.
 
+## example output
+```
+pi@raspberrypi:~/ener314rt-debug-master $ node test.js
+napi_energenie.Init() called
+radio-test: Initialising
+init_ener314(): initialising
+init_ener314(): mutex created & locked
+radio_init
+radio_ver=36
+radio_standby
+_wait_ready
+radio_standby
+_wait_ready
+radio-test: N-API radio_init returned 0
+radio-test: switching 1:1:true
+ook_send: Zone=1, Switch=1, state=1
+_wait_ready
+radio_mod_transmit()
+_wait_ready
+_wait_txready
+radio_send_payload(): 20 tx payloads
+|**|*|*|*|*|*|*|*|*|**|*|*|*|*|*|*|*|*|*|**_wait_ready
+radio-test: switching 1:1:false
+ook_send: Zone=1, Switch=1, state=0
+radio_mod_transmit()
+_wait_ready
+_wait_txready
+radio_send_payload(): 20 tx payloads
+*|*|*|*|*|*|*|*|*|*|**|*|*|*|*|*|*|*|*|**|*_wait_ready
+openthings_deviceList(): called
+openthings_deviceList(): Returning: {"numDevices":0, "devices":[
+]}
+radio-test: deviceList={"numDevices":0, "devices":[
+]}
+^C
+```
+
 # About
 
 Raise any bugs/queries here: https://github.com/Achronite/ener314rt-debug/issues
