@@ -6,8 +6,13 @@ This code runs completely independently of node module, and contains a clone of 
 ## Check you have node installed, at least version 10
 ``$ node -v``
 
-## To compile code
-``$ node-gyp rebuild``
+## To install and compile code
+```
+$ wget https://github.com/Achronite/ener314rt-debug/archive/master.zip
+$ unzip master.zip
+$ cd ener314*
+$ node-gyp rebuild
+```
 If you do not have node-gyp, please install using ``$ npm install -g node-gyp``
 
 ## To run
