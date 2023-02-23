@@ -74,7 +74,6 @@ void gpio_init()
 
    gpio_base = peri_base + GPIO_BASE_OFFSET;
 
-
    /* open /dev/mem */
    /* PTG: changed to use gpiomem first to avoid root */
    if ((mem_fd = open("/dev/gpiomem", O_RDWR|O_SYNC) ) < 0) 
@@ -100,7 +99,7 @@ void gpio_init()
 
    if (gpio_map == MAP_FAILED) 
    {
-      printf("mmap error %d\n", (int)gpio_map);//errno also set!
+      printf("mmap error %d (%s) using gpio_base=%d\n", (int)gpio_map, strerror(errno), gpio_base); //errno also set!
       exit(-1); //TODO return a result code
    }
 
