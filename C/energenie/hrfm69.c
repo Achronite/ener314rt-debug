@@ -80,6 +80,12 @@ HRF_RESULT HRF_readfifo_burst_cbp(uint8_t* buf, uint8_t buflen)
 
     /* Read the first byte, and then decide how many remaining bytes to receive */
     data = spi_byte(HRF_ADDR_FIFO);
+
+    /* debug added for buf issue*/
+    TRACE_OUTS("datalen=");
+    TRACE_OUTN(data);
+    TRACE_NL();
+
     *(buf++) = data; /* the count byte is always returned as first byte of user buffer */
 
     /* Validate the payload len against the supplied user buffer */
