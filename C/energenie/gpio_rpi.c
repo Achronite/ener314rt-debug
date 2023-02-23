@@ -14,6 +14,7 @@
 #include <sys/mman.h>
 #include <unistd.h>
 #include <time.h>
+#include <string.h>
 
 #include "gpio.h"
 
