@@ -23,6 +23,7 @@
 /***** CONSTANTS *****/
 
 #define BCM2708_PERI_BASE        0x20000000
+#define BCM2708_PERI_BASE_PI2    0x3F000000
 //#define GPIO_BASE                (BCM2708_PERI_BASE + 0x200000) /* GPIO controller */
 #define GPIO_BASE_OFFSET           0x200000
 
@@ -72,8 +73,14 @@ void gpio_init()
          peri_base = buf[0]<<24 | buf[1]<<16 | buf[2]<<8 | buf[3];
       }
       fclose(fp);
+
+      /* Fudge for 64-bit OS */
+      if (peri_base == 0){
+        printf("read of /proc/device-tree/soc/ranges returned 0, assuming 64 bit OS\n");
+        peri_base = BCM2708_PERI_BASE_PI2;
+      }
    } else {
-      printf("cannot open /proc/device-tree/soc/ranges, using default GPIO base\n"); //errno also set!    
+      printf("cannot open /proc/device-tree/soc/ranges, using default GPIO base\n");
    }
 
    gpio_base = peri_base + GPIO_BASE_OFFSET;
