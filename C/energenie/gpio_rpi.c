@@ -72,6 +72,8 @@ void gpio_init()
          peri_base = buf[0]<<24 | buf[1]<<16 | buf[2]<<8 | buf[3];
       }
       fclose(fp);
+   } else {
+      printf("cannot open /proc/device-tree/soc/ranges, using default GPIO base\n"); //errno also set!    
    }
 
    gpio_base = peri_base + GPIO_BASE_OFFSET;
@@ -101,7 +103,7 @@ void gpio_init()
 
    if (gpio_map == MAP_FAILED) 
    {
-      printf("mmap error %d (%s) using gpio_base=%d\n", (int)gpio_map, strerror(errno), gpio_base); //errno also set!
+      printf("mmap error %d (%s) using gpio_base=%#010x\n", (int)gpio_map, strerror(errno), gpio_base); //errno also set!
       exit(-1); //TODO return a result code
    }
 
