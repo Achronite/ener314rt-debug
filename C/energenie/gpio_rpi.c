@@ -23,7 +23,11 @@
 /***** CONSTANTS *****/
 
 #define BCM2708_PERI_BASE        0x20000000
-#define BCM2708_PERI_BASE_PI2    0x3F000000
+
+#define	GPIO_PERI_BASE_OLD  0x20000000
+#define	GPIO_PERI_BASE_2835 0x3F000000
+#define	GPIO_PERI_BASE_2711 0xFE000000
+
 //#define GPIO_BASE                (BCM2708_PERI_BASE + 0x200000) /* GPIO controller */
 #define GPIO_BASE_OFFSET           0x200000
 
@@ -77,11 +81,36 @@ void gpio_init()
       /* Fudge for 64-bit OS */
       if (peri_base == 0){
         printf("read of /proc/device-tree/soc/ranges returned 0, assuming 64 bit OS\n");
-        peri_base = BCM2708_PERI_BASE_PI2;
+        peri_base = GPIO_PERI_BASE_2711;
       }
    } else {
       printf("cannot open /proc/device-tree/soc/ranges, using default GPIO base\n");
    }
+
+/*
+  switch (model)
+  {
+    case PI_MODEL_A:	case PI_MODEL_B:
+    case PI_MODEL_AP:	case PI_MODEL_BP:
+    case PI_ALPHA:	case PI_MODEL_CM:
+    case PI_MODEL_ZERO:	case PI_MODEL_ZERO_W:
+      piGpioBase = GPIO_PERI_BASE_OLD ;
+      piGpioPupOffset = GPPUD ;
+      break ;
+
+    case PI_MODEL_4B:
+    case PI_MODEL_400:
+    case PI_MODEL_CM4:
+      piGpioBase = GPIO_PERI_BASE_2711 ;
+      piGpioPupOffset = GPPUPPDN0 ;
+      break ;
+
+    default:
+      piGpioBase = GPIO_PERI_BASE_2835 ;
+      piGpioPupOffset = GPPUD ;
+      break ;
+  }
+  */
 
    gpio_base = peri_base + GPIO_BASE_OFFSET;
 
