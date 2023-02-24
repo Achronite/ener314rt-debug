@@ -198,7 +198,7 @@ struct TRV_DEVICE {
     unsigned char retries;
     unsigned char command;
     unsigned char cachedCmd[MAX_R1_MSGLEN];
-    char errString[MAX_ERRSTR];
+    char errString[MAX_ERRSTR+1];
 };
 
 // DeviceList structure
